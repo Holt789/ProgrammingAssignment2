@@ -1,5 +1,6 @@
 ## Put comments here that give an overall description of what your
-## functions do
+## makeCacheMatrix: Creates a special "matrix" object that can cache its inverse.
+## cacheSolve: Computes the inverse of the special "matrix" returned by makeCacheMatrix function
 
 ## Write a short comment describing this function
 #   This function takes a matrix as an argument and returns a special vector
