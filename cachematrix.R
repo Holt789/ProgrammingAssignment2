@@ -1,10 +1,9 @@
-## Put comments here that give an overall description of what your
 ## makeCacheMatrix: Creates a special "matrix" object that can cache its inverse.
 ## cacheSolve: Computes the inverse of the special "matrix" returned by makeCacheMatrix function
 
-## Write a short comment describing this function
-#   This function takes a matrix as an argument and returns a special vector
-#   containing list of functions to the cached object
+
+## This function takes a matrix as an argument and returns a special vector
+##  containing list of functions to the cached object
 makeCacheMatrix <- function(x = matrix()) {
   xirtam <- NULL
   set <- function(y) {
@@ -25,11 +24,9 @@ makeCacheMatrix <- function(x = matrix()) {
        getInverse = getInverse)												
 }
 
-
-## Write a short comment describing this function
-#  This function takes a cached matrix as an argument and returns the inverse of that matrix.
-#	  If the inverse of the matrix has already been solved and stored the cached version 
-#   will be returned otherwise it will be resolved and returned.
+## This function takes a cached matrix as an argument and returns the inverse of that matrix.
+##  If the inverse of the matrix has already been solved and stored the cached version 
+##  will be returned otherwise it will be resolved and returned.
 cacheSolve <- function(x, ...) {
   xirtam <- x$getInverse()
   
