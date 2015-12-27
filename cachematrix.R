@@ -12,13 +12,17 @@ makeCacheMatrix <- function(x = matrix()) {
     xirtam <<- NULL
   }
   get <- function() x
-  setInverse <- function(inverse) xirtam <<- inverse	# set the cached inverse to the newly solved inverse.
   
-  getInverse <- function() xirtam											# return the cached inverse.
+  # set the cached inverse to the newly solved inverse.
+  setInverse <- function(inverse) xirtam <<- inverse	
   
+  # return the cached inverse.
+  getInverse <- function() xirtam											
+  
+  # return list of pointers to functions.
   list(set = set, get = get,
        setInverse = setInverse,
-       getInverse = getInverse)												# return list of pointers to functions.
+       getInverse = getInverse)												
 }
 
 
@@ -28,17 +32,24 @@ makeCacheMatrix <- function(x = matrix()) {
 #   will be returned otherwise it will be resolved and returned.
 cacheSolve <- function(x, ...) {
   xirtam <- x$getInverse()
-  if(!is.null(xirtam)) {															# Check to see if there is a cached inverse
+  
+  # Check to see if there is a cached inverse
+  if(!is.null(xirtam)) {															
     message("getting cached data")
-    return(xirtam)																		# Return cached matrix that is the inverse of 'x'
+    return(xirtam)																		
   }
-  data <- x$get()																			# Check to see if the matix has an inverse
+  # Return cached matrix that is the inverse of 'x'
+  data <- x$get()																			
+  
+  # Check to see if the matix has an inverse
   if (det(data) == 0) {
     message("Determinant of matrix is 0 therefore no inverse of the matrix exists.")
   }
   else {
+  	# Solve and set the inverse of the matrix
     xirtam <- solve(data, ...)
     x$setInverse(xirtam)  
-    xirtam																						# Return a matrix that is the inverse of 'x'
+    # Return a matrix that is the inverse of 'x'
+    xirtam																						
   }
 }
